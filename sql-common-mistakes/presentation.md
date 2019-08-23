@@ -43,7 +43,7 @@ FROM persons
 GROUP BY last_name;
 ``` 
 
-* Developer wants to add column for first name to query because he also wants the name associated with max age
+* Developer wants to add a column for first name to query because he also wants the name associated with max age
 	* Problem arises from error in reasoning
 	* New column is added to SELECT
 
@@ -100,7 +100,7 @@ FROM Persons
 WHERE birth_state IN (
 	SELECT birth_state
 	FROM StateKeys 
-	WHERE staat_txl = 'Norway'
+	WHERE state_txl = 'Norway'
 )
 ```
 * Result: All persons in table
@@ -116,7 +116,7 @@ FROM Persons AS p
 WHERE p.birth_state IN (
 	SELECT s.birth_state
 	FROM StateKeys AS s 
-	WHERE s.staat_txl = 'Norway'
+	WHERE s.state_txl = 'Norway'
 )
 ```
 * Makes it possible to spot mistake due to error
@@ -262,18 +262,18 @@ AND (CASE
 * Too many indexes
 	* Additional index on Primary Key column
 		* Most DBMS create index for PK column
-	* Index on long String-like columns like VARCHAR(300)
-		* depend on situation
+	* Index on long string-like columns like VARCHAR(300)
+		* Depends on situation
 		* Index can get huge
-		* columns like `content`, `description` etc. are less likely to be searched
+		* Columns like `content`, `description` etc. are less likely to be searched
 
 ----
 
 ## Indexes
 
 * Too many indexes which are not used in search
-	* Indexes on columns with little value variations like gender
-	* Duplicated Indexes
+	* Indexes on columns with little value variations like eye color
+	* Duplicated indexes
 		* Example
 			* Index on surname, firstname
 			* Index on surname
@@ -281,7 +281,7 @@ AND (CASE
 
 ----
 
-## Indexe
+## Indexes
 
 * Queries, which cannot be supported by specific index
 	* Assumption: Index for (surname, firstname)
@@ -322,7 +322,7 @@ LIMIT 1;
 
 * Alternatives
 	* Use knowledge over data
-		* how are keys distributed (are there spaces, etc.)
+		* How are keys distributed (are there spaces, etc.)
 	* Use special vendor functions
 		* row_number()
 		* Sample-function
@@ -343,7 +343,7 @@ ORDER BY DBMS_RANDOM.VALUE) WHERE rownum<=1
 
 * SQL has ternary logic
 	* NULL means no value exists
-		* it is a state and not a value
+		* It is a state and not a value
 * If one would ask how many books does Peter own?
 	* NULL would mean we don't know how many books he owns, not that he doesn't own books
 * All real RDMS support the presentation of unknown or missing data
@@ -387,7 +387,7 @@ SELECT 'ALL', COUNT(*) FROM Persons
 * NULL cannot be compared with `=` or `<>` because the result can never be true
 * Even NULL cannot be compared with NULL
 * Attention: Oracle treats empty string like NULL
-	* Common Mistake: `trim(description)=''`
+	* Common mistake: `trim(description)=''`
 
 ----
 
@@ -395,7 +395,7 @@ SELECT 'ALL', COUNT(*) FROM Persons
 
 * Differs between vendors
 	* Oracle treats NULL like empty string so concatenation successful
-	* e.g. SQL Server results in NULL string if any of the concatenated values where null
+	* E.g. SQL Server results in NULL string if any of the concatenated values were null
 
 [//]: # (Resulting NULL makes more sense because concatenating something unknown to something known can only result in unknown)
 
@@ -404,7 +404,7 @@ SELECT 'ALL', COUNT(*) FROM Persons
 ## Sorting with NULL
 
 * Differs between different vendors
-	* e.g. Oracle sorts NULL to the end, SQL Server to the beginning
+	* E.g. Oracle sorts NULL to the end, SQL Server to the beginning
 	* Can change behavior by using NULLS FIRST (Oracle)
 
 ----
