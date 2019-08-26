@@ -27,7 +27,7 @@ Julia Strauß
 ## Slides
 
 * Presentation
-	* https://github.com/jstrausstng/slides
+	* https://github.com/jstrausstng/slides/tree/master/sql-common-mistakes
 
 ---
 
