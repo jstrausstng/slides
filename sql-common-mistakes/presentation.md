@@ -27,7 +27,7 @@ Julia Strauß
 ## Slides
 
 * Presentation
-	* https://bitbucket.int.tngtech.com/projects/MSD/repos/sql-common-mistakes/browse
+	* https://github.com/jstrausstng/slides
 
 ---
 
